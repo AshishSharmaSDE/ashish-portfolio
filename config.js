@@ -49,7 +49,7 @@ export const manifestOptions = {
   country: "India",
   github: "https://github.com/AshishSharmaSDE",
   linkedIn: "https://www.linkedin.com/in/ashish-sharma-sde/",
-  resume: "./src/assets/resume.pdf",
+  resume: "/ashish-portfolio/resume.pdf",
   x: "https://x.com/AshishSharmaSde",
 };
 export const personalDiscription = `I am a results-driven Full Stack Developer with a knack for enhancing user experiences and streamlining workflows. My expertise spans across various technologies including React, Redux Toolkit, Angular, TypeScript, NodeJS, NestJS, and more. I have a solid understanding of DevOps practices and database management, ensuring that I deliver comprehensive and high-performing solutions.`;
