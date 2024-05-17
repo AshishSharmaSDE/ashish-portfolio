@@ -1,6 +1,6 @@
 {
+  "homepage": "https://ashishsharmasde.github.io/ashish-portfolio/",
   "name": "ashish-portfolio",
-  "homepage": "https://AshishSharmaSDE.github.io/ashish-portfolio",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "install-deps": "npm install @fortawesome/fontawesome-svg-core @fortawesome/free-brands-svg-icons @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome react-bootstrap smoothscroll-polyfill",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
