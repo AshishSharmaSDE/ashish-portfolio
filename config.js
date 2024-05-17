@@ -64,8 +64,8 @@ export const experience = [
       "Engineered a TypeScript-based component optimization strategy that reduced load times by 40%, resulting in an enhanced user experience and a 25% increase in user engagement metrics.",
       "Led skill development sessions in TypeScript, SQL, and project management, driving team cohesion and productivity; upskilled team led to a 30% reduction in project completion time and a 20% increase in code efficiency.",
     ],
-    skillSet: ["TypeScript", "TCL", ".Net", "MySQL", "GIT", "Mentorship"],
-    projects: ["JCS to JEDI"],
+    skillSet: ["TypeScript", "TCL", ".Net", "MySQL", "GIT", "JavaScript"],
+    projects: ["JCS to JEDI", "CareRadius"],
   },
   {
     role: "Software Engineer",
