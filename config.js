@@ -100,27 +100,21 @@ export const experience = [
 
 export const projects = [
   {
-    title: "Github Search",
+    title: "CurlGoClone",
     description:
-      "A Web application developed in React/Typescript that allows users to search for Github Profiles and show them with an amazing User Experience.",
-    sourceLink: "https://github.com/C0lliNN/GithubSearch",
+      "A GO lang application with functionality similar to Curl",
+    sourceLink: "https://github.com/AshishSharmaSDE/curlGoClone",
   },
   {
-    title: "Weather App",
+    title: "Sudent-Alumni-Scheduler",
     description:
-      "A Weather Application developed in Vue.js that allow users visualize weather information.",
-    sourceLink: "https://github.com/C0lliNN/Weather-App",
+      "An Angular Application which allows students to connect and book timeslot for conversation.",
+    sourceLink: "https://github.com/AshishSharmaSDE/Sudent-Alumni-Scheduler",
   },
   {
-    title: "Movie Library",
+    title: "dummy-netflix",
     description:
-      "A Web Application developed in ReactJS that allows users navigate throughout movies easily.",
-    sourceLink: "https://github.com/C0lliNN/MovieLibrary",
-  },
-  {
-    title: "Shortly",
-    description:
-      "A Landing Page for URL Shortener developed in HTML, LESS and Vanilla JS.",
-    sourceLink: "https://github.com/C0lliNN/Shortly",
+      "A netflix backend service for get and fetch movies via created APIs.",
+    sourceLink: "https://github.com/AshishSharmaSDE/dummy-netflix",
   },
 ];
