@@ -1,0 +1,160 @@
+.section {
+  position: relative;
+  background: var(--bg-section-alt);
+}
+
+.quote {
+  position: relative;
+  margin: 0 0 2.5rem;
+  padding: 1.5rem 1.25rem 1.5rem 1.75rem;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  background: var(--bg-accent);
+  box-shadow: var(--shadow-sm);
+}
+
+.quoteMark {
+  position: absolute;
+  top: -0.25rem;
+  left: 0.75rem;
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.35;
+}
+
+.quote p {
+  position: relative;
+  font-family: var(--font-serif);
+  font-size: clamp(1.0625rem, 2.5vw, 1.25rem);
+  font-style: italic;
+  line-height: 1.75;
+  color: var(--text-primary);
+}
+
+.traits {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.traitCard {
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.traitCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.traitCard:hover::before,
+.traitCard:active::before {
+  opacity: 1;
+}
+
+.traitIcon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  background: var(--accent-muted);
+  color: var(--accent);
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.traitTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.traitTagline {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.traitDesc {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.process {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-secondary);
+}
+
+.processStep {
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  align-items: flex-start;
+}
+
+.processStep:last-child {
+  border-bottom: none;
+}
+
+.stepNum {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent);
+  padding-top: 0.15rem;
+}
+
+.stepTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.stepText {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+@media (min-width: 768px) {
+  .traits {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .quote {
+    padding: 2rem 2rem 2rem 2.5rem;
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .traitCard {
+    padding: 1.25rem;
+  }
+
+  .processStep {
+    padding: 1rem 1.25rem;
+  }
+}

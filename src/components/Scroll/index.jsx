@@ -27,7 +27,7 @@ const Scroll = (props) => {
     }
     scroll
       ? scrollTo(elem, offset, timeout)
-      : console.log(`Element not found: ${element}`); // eslint-disable-line
+      : console.log(`Element not found: ${element}`);
   };
   const scrollTo = (element, offSet = 0, timeout = null) => {
     const elemPos = element
@@ -51,7 +51,6 @@ const Scroll = (props) => {
       {typeof props.children === "object" ? (
         React.cloneElement(props.children, { onClick: handleClick })
       ) : (
-        // eslint-disable-next-line
         <span onClick={handleClick}>{props.children}</span>
       )}
     </Element>

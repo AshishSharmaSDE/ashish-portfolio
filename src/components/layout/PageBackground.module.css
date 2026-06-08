@@ -1,0 +1,48 @@
+.bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    var(--dot-color) 1px,
+    transparent 0
+  );
+  background-size: 28px 28px;
+  mask-image: linear-gradient(to bottom, black 0%, transparent 85%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 85%);
+}
+
+.glow {
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  max-width: 480px;
+  max-height: 480px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+}
+
+.glowOne {
+  top: -10%;
+  right: -15%;
+  background: var(--accent);
+}
+
+.glowTwo {
+  bottom: 20%;
+  left: -20%;
+  background: #0ea5e9;
+  opacity: 0.15;
+}
+
+[data-theme="dark"] .glowTwo {
+  opacity: 0.12;
+}

@@ -1,9 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import IndexPage from "./pages/index.jsx";
+import { ThemeProvider } from "./context/ThemeContext";
+import App from "./App";
+import "./styles/globals.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <IndexPage></IndexPage>
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
   </React.StrictMode>
 );

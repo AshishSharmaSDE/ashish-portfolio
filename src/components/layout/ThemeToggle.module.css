@@ -1,0 +1,53 @@
+.toggle {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  transition: all var(--transition-base);
+  overflow: hidden;
+}
+
+.toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--card-hover);
+}
+
+.iconWrap {
+  position: relative;
+  width: 18px;
+  height: 18px;
+}
+
+.sun,
+.moon {
+  position: absolute;
+  inset: 0;
+  transition: transform var(--transition-slow), opacity var(--transition-base);
+}
+
+.iconWrap[data-theme-icon="sun"] .sun {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.iconWrap[data-theme-icon="sun"] .moon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+.iconWrap[data-theme-icon="moon"] .moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.iconWrap[data-theme-icon="moon"] .sun {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
