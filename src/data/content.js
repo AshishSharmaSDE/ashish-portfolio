@@ -69,6 +69,9 @@ export const approach = {
 
 export const about = {
   headline: "I don't just move data — I make it mean something.",
+  story: `I began as a full-stack developer — shipping healthcare apps, migrating legacy systems, and learning that the hardest bugs often lived in the data, not the UI. Spreadsheets that didn't reconcile. Dashboards nobody trusted. Sales teams making Monday decisions from Friday's wrong numbers.
+
+That frustration pushed me into data engineering. Today at EXL, I build Medicare sales pipelines and analytics that field agents and leaders rely on every week — from raw enrollment files to quota dashboards that actually match reality. I still code. I still think in systems. I just spend more time asking "what story does this data need to tell?" before I write the first line of SQL.`,
   bio: `I'm a Data Engineer with a full-stack foundation. At EXL, I build Medicare sales pipelines and dashboards that field teams rely on every week. Before data engineering, I spent four years shipping healthcare apps — so I think in systems, not silos. Whether it's reconciling commission files or explaining a funnel drop to leadership, I connect the technical work to the human decision behind it.`,
   highlights: [
     "Think first — stakeholder context before architecture",
@@ -88,9 +91,9 @@ export const about = {
 
 export const navigation = [
   { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
   { label: "Contact", href: "#contact" },
 ];
 

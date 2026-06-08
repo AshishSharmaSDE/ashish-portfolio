@@ -6,144 +6,129 @@ import {
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import {
-  faArrowDown,
   faDownload,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 import { about, site, traits } from "../../data/content";
-import profilePicture from "../../assets/img/profile_picture.jpg";
+import { identityTiles } from "../../data/visual";
+import profilePicture from "../../assets/img/profile_picture.png";
 import styles from "./Hero.module.css";
-
-const container = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.08 },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
-  },
-};
 
 export default function Hero() {
   return (
     <section id="hero" className={styles.hero}>
-      <div className={styles.bgGlow} aria-hidden="true" />
-      <div className={`container ${styles.content}`}>
-        <motion.div
-          className={styles.grid}
-          variants={container}
-          initial="hidden"
-          animate="visible"
-        >
-          <motion.div className={styles.text} variants={item}>
-            <p className={styles.greeting}>
-              <span className={styles.wave}>👋</span> Hello, I&apos;m
-            </p>
-            <h1 className={styles.name}>{site.title}</h1>
-            <p className={styles.tagline}>{site.tagline}</p>
-            <p className={styles.role}>{site.role}</p>
+      <div className={styles.mesh} aria-hidden="true" />
 
-            <div className={styles.traitPills} aria-label="Core strengths">
-              {traits.map((trait) => (
-                <span key={trait.id} className={styles.traitPill}>
-                  {trait.title}
+      <div className={`container ${styles.inner}`}>
+        <div className={styles.bento}>
+          {/* Photo block — dominant visual */}
+          <motion.div
+            className={styles.photoBlock}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <img
+              src={profilePicture}
+              alt={site.title}
+              className={styles.photo}
+              width={400}
+              height={400}
+            />
+            <div className={styles.photoOverlay}>
+              <span className={styles.photoBadge}>{about.floatingCard.value}</span>
+            </div>
+            {identityTiles.map((tile, i) => (
+              <motion.span
+                key={tile.id}
+                className={`${styles.floatChip} ${styles[`chip${i}`]}`}
+                style={{ "--chip-color": tile.color }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.4 + i * 0.12 }}
+              >
+                <span className={styles.chipEmoji}>{tile.emoji}</span>
+                {tile.title}
+              </motion.span>
+            ))}
+          </motion.div>
+
+          {/* Identity block — bold type, minimal copy */}
+          <motion.div
+            className={styles.identityBlock}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.55, delay: 0.15 }}
+          >
+            <p className={styles.greeting}>{site.title}</p>
+            <h1 className={styles.headline}>
+              I turn messy data into{" "}
+              <span className={styles.highlight}>stories</span> people act on.
+            </h1>
+
+            <div className={styles.traitRow}>
+              {traits.map((t) => (
+                <span key={t.id} className={styles.trait}>
+                  {t.title}
                 </span>
               ))}
             </div>
 
-            <p className={styles.location}>
-              <FontAwesomeIcon icon={faLocationDot} />
-              {site.location}
-            </p>
-            <p className={styles.headline}>{about.headline}</p>
-            <p className={styles.bio}>{about.bio}</p>
+            <p className={styles.role}>{site.role}</p>
 
-            <ul className={styles.highlights}>
-              {about.highlights.map((point) => (
-                <li key={point}>{point}</li>
+            <div className={styles.meta}>
+              <span>
+                <FontAwesomeIcon icon={faLocationDot} />
+                {site.location}
+              </span>
+            </div>
+
+            <div className={styles.story}>
+              {about.story.split("\n\n").map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
               ))}
-            </ul>
+            </div>
 
-            <div className={styles.cta}>
-              <a href="#contact" className={`btn btn-primary ${styles.ctaPrimary}`}>
-                Get in touch
+            <div className={styles.stats}>
+              {about.stats.map((s) => (
+                <div key={s.label} className={styles.stat}>
+                  <strong>{s.value}</strong>
+                  <span>{s.label}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className={styles.actions}>
+              <a href="#projects" className="btn btn-primary">
+                See my work
+              </a>
+              <a href="#contact" className="btn btn-secondary">
+                Contact
               </a>
               <a
                 href={site.resume}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`btn btn-secondary ${styles.ctaSecondary}`}
+                className={styles.iconBtn}
+                aria-label="Download resume"
               >
                 <FontAwesomeIcon icon={faDownload} />
-                Download CV
               </a>
             </div>
 
             <div className={styles.social}>
-              <a
-                href={site.social.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-              >
+              <a href={site.social.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <FontAwesomeIcon icon={faGithub} />
               </a>
-              <a
-                href={site.social.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-              >
+              <a href={site.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <FontAwesomeIcon icon={faLinkedinIn} />
               </a>
-              <a
-                href={site.social.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="X / Twitter"
-              >
+              <a href={site.social.twitter} target="_blank" rel="noopener noreferrer" aria-label="X">
                 <FontAwesomeIcon icon={faXTwitter} />
               </a>
             </div>
           </motion.div>
-
-          <motion.div className={styles.visual} variants={item}>
-            <div className={styles.imageFrame}>
-              <img
-                src={profilePicture}
-                alt={site.title}
-                className={styles.profileImg}
-                width={360}
-                height={360}
-              />
-              <div className={styles.imageRing} aria-hidden="true" />
-              <div className={styles.imageGlow} aria-hidden="true" />
-            </div>
-            <div className={styles.floatingCard}>
-              <span className={styles.cardLabel}>{about.floatingCard.label}</span>
-              <span className={styles.cardValue}>{about.floatingCard.value}</span>
-            </div>
-          </motion.div>
-        </motion.div>
-
-        <motion.a
-          href="#about"
-          className={styles.scrollHint}
-          aria-label="Scroll to about section"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.6 }}
-        >
-          <span className={styles.scrollText}>Explore</span>
-          <FontAwesomeIcon icon={faArrowDown} />
-        </motion.a>
+        </div>
       </div>
     </section>
   );

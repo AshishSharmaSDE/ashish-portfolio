@@ -40,9 +40,5 @@
   bottom: 20%;
   left: -20%;
   background: #0ea5e9;
-  opacity: 0.15;
-}
-
-[data-theme="dark"] .glowTwo {
   opacity: 0.12;
 }

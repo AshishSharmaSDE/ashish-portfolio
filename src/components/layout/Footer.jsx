@@ -14,7 +14,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>
         <p className={styles.copy}>
-          © {year} {site.title}. Built with React & Vite.
+          © {year} {site.title}.
         </p>
         <div className={styles.social}>
           <a

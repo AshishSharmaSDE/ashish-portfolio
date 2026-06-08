@@ -2,7 +2,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import SectionHeading from "../layout/SectionHeading";
 import { experience } from "../../data/content";
 import styles from "./Experience.module.css";
 
@@ -10,13 +9,12 @@ export default function Experience() {
   const [expandedId, setExpandedId] = useState(experience[0]?.id ?? null);
 
   return (
-    <section id="experience" className="section">
+    <section id="experience" className={`section ${styles.experienceSection}`}>
       <div className="container">
-        <SectionHeading
-          label="Experience"
-          title="Data engineering today, full-stack yesterday"
-          subtitle="Two years building Medicare sales pipelines and dashboards at EXL — preceded by four years shipping healthcare and cloud applications."
-        />
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>Experience</h2>
+          <span className={styles.sectionHint}>Data engineering · Full stack</span>
+        </div>
 
         <div className={styles.timeline}>
           {experience.map((job, index) => {
@@ -39,6 +37,13 @@ export default function Experience() {
                   }
                   aria-expanded={isOpen}
                 >
+                  <span className={styles.companyAvatar} aria-hidden="true">
+                    {job.company
+                      .split(" ")
+                      .slice(0, 2)
+                      .map((w) => w[0])
+                      .join("")}
+                  </span>
                   <div className={styles.meta}>
                     <div className={styles.metaTop}>
                       <span className={styles.period}>

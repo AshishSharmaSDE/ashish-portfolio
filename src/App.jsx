@@ -4,9 +4,9 @@ import Footer from "./components/layout/Footer";
 import PageBackground from "./components/layout/PageBackground";
 import MobileNav from "./components/layout/MobileNav";
 import BackToTop from "./components/layout/BackToTop";
+import Marquee from "./components/visual/Marquee";
 import Hero from "./components/sections/Hero";
-import Approach from "./components/sections/Approach";
-import About from "./components/sections/About";
+import Identity from "./components/sections/Identity";
 import Experience from "./components/sections/Experience";
 import Projects from "./components/sections/Projects";
 import Skills from "./components/sections/Skills";
@@ -21,18 +21,18 @@ export default function App() {
         meta={[
           { name: "description", content: site.description },
           { name: "keywords", content: site.keywords },
-          { name: "theme-color", content: "#6366f1" },
+          { name: "theme-color", content: "#0a0a0f" },
         ]}
       />
       <PageBackground />
       <Navbar />
       <main>
         <Hero />
-        <Approach />
-        <About />
+        <Marquee />
+        <Identity />
+        <Skills />
         <Experience />
         <Projects />
-        <Skills />
         <Contact />
       </main>
       <Footer />

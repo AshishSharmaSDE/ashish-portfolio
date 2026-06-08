@@ -1,0 +1,265 @@
+.section {
+  padding-block: clamp(1.5rem, 3vw, 2.5rem);
+  background: var(--bg-section-alt);
+  border-block: 1px solid var(--border);
+  width: 100%;
+}
+
+.sectionHead {
+  margin-bottom: 1.25rem;
+}
+
+.sectionLabel {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.35rem;
+}
+
+.sectionTitle {
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* ── Trait cards: always 3 across on tablet+ ── */
+.traitsRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+@media (min-width: 540px) {
+  .traitsRow {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.traitTile {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 1rem 1.125rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+.traitTile::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--tile-accent);
+}
+
+.traitTile:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.tileEmoji {
+  font-size: 2rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.traitText {
+  min-width: 0;
+}
+
+.tileTitle {
+  font-size: 1.0625rem;
+  font-weight: 800;
+  margin-bottom: 0.1rem;
+}
+
+.tileMetric {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ── What I build: shared label + equal-height columns ── */
+.workBlock {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.workBlock .cellLabel {
+  margin-bottom: 0.625rem;
+}
+
+.workRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  width: 100%;
+  align-items: stretch;
+}
+
+@media (min-width: 768px) {
+  .workRow {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1100px) {
+  .workRow {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+
+.pipelineCol,
+.dashboardCol {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  width: 100%;
+  min-height: 260px;
+}
+
+@media (min-width: 768px) {
+  .pipelineCol,
+  .dashboardCol {
+    min-height: 300px;
+  }
+}
+
+.pipelineCol > *,
+.dashboardCol > * {
+  flex: 1;
+  min-height: 0;
+}
+
+.cellLabel {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+/* ── Footer: quote + process side by side ── */
+.footerRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .footerRow {
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+}
+
+@media (min-width: 1100px) {
+  .footerRow {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+
+.quoteCell {
+  margin: 0;
+  padding: 1.25rem 1.5rem 1.25rem 2rem;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--accent-muted), transparent);
+  border: 1px solid var(--border);
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.quoteMark {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.75rem;
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.3;
+}
+
+.quoteCell p {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.processCell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.875rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  height: 100%;
+}
+
+.processItem {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 0.625rem 0.75rem;
+  border-radius: var(--radius-md);
+  background: var(--bg-accent);
+}
+
+.processNum {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  padding-top: 0.1rem;
+}
+
+.processTitle {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.15rem;
+}
+
+.processText {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+@media (min-width: 1100px) {
+  .processCell {
+    flex-direction: row;
+    gap: 0.625rem;
+    padding: 1rem;
+  }
+
+  .processItem {
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    height: 100%;
+    justify-content: flex-start;
+  }
+}

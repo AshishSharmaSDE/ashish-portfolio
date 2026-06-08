@@ -2,7 +2,7 @@ import { useState } from "react";
 import Scrollspy from "react-scrollspy";
 import Scroll from "../Scroll";
 
-import picture from "../../assets/img/profile_picture.jpg";
+import picture from "../../assets/img/profile_picture.png";
 import { manifestOptions } from "../../../config";
 
 import Navbar from "react-bootstrap/Navbar";

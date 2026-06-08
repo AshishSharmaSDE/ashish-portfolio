@@ -8,13 +8,17 @@ import {
   faDatabase,
   faLayerGroup,
 } from "@fortawesome/free-solid-svg-icons";
-import SectionHeading from "../layout/SectionHeading";
 import { projects, projectFilters } from "../../data/content";
 import styles from "./Projects.module.css";
 
 const categoryIcons = {
   dataEngineering: faDatabase,
   fullStack: faLayerGroup,
+};
+
+const categoryGradients = {
+  dataEngineering: "linear-gradient(135deg, #6366f1 0%, #0ea5e9 100%)",
+  fullStack: "linear-gradient(135deg, #ec4899 0%, #f59e0b 100%)",
 };
 
 export default function Projects() {
@@ -25,66 +29,45 @@ export default function Projects() {
       ? projects
       : projects.filter((p) => p.category === activeFilter);
 
-  const featured = filtered.filter((p) => p.featured);
-  const rest = filtered.filter((p) => !p.featured);
-
   return (
-    <section id="projects" className="section">
+    <section id="projects" className={`section ${styles.section}`}>
       <div className="container">
-        <SectionHeading
-          label="Projects"
-          title="Pipelines, dashboards & products"
-          subtitle="Professional healthcare data work alongside open-source and full-stack projects from earlier in my career."
-        />
-
-        <div className={styles.filters} role="tablist" aria-label="Project categories">
-          {projectFilters.map((filter) => (
-            <button
-              key={filter.id}
-              type="button"
-              role="tab"
-              aria-selected={activeFilter === filter.id}
-              className={`${styles.filterBtn} ${
-                activeFilter === filter.id ? styles.filterActive : ""
-              }`}
-              onClick={() => setActiveFilter(filter.id)}
-            >
-              {filter.label}
-            </button>
-          ))}
+        <div className={styles.header}>
+          <h2 className={styles.title}>Work & projects</h2>
+          <div className={styles.filters} role="tablist" aria-label="Project categories">
+            {projectFilters.map((filter) => (
+              <button
+                key={filter.id}
+                type="button"
+                role="tab"
+                aria-selected={activeFilter === filter.id}
+                className={`${styles.filterBtn} ${
+                  activeFilter === filter.id ? styles.filterActive : ""
+                }`}
+                onClick={() => setActiveFilter(filter.id)}
+              >
+                {filter.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         <AnimatePresence mode="wait">
           <motion.div
             key={activeFilter}
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.25 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
           >
             {filtered.length === 0 ? (
               <p className={styles.empty}>No projects in this category yet.</p>
             ) : (
-              <>
-                {featured.length > 0 && (
-                  <div className={styles.featured}>
-                    {featured.map((project, index) => (
-                      <ProjectCard
-                        key={project.id}
-                        project={project}
-                        featured
-                        index={index}
-                      />
-                    ))}
-                  </div>
-                )}
-
-                <div className={styles.grid}>
-                  {(featured.length > 0 ? rest : filtered).map((project, index) => (
-                    <ProjectCard key={project.id} project={project} index={index} />
-                  ))}
-                </div>
-              </>
+              <div className={styles.grid}>
+                {filtered.map((project, index) => (
+                  <ProjectCard key={project.id} project={project} index={index} />
+                ))}
+              </div>
             )}
           </motion.div>
         </AnimatePresence>
@@ -93,68 +76,67 @@ export default function Projects() {
   );
 }
 
-function ProjectCard({ project, featured = false, index }) {
+function ProjectCard({ project, index }) {
   const icon = categoryIcons[project.category] ?? faCode;
+  const gradient =
+    categoryGradients[project.category] ?? categoryGradients.fullStack;
 
   return (
     <motion.article
-      className={`card ${styles.card} ${featured ? styles.featuredCard : ""}`}
-      initial={{ opacity: 0, y: 24 }}
+      className={`card ${styles.card} ${project.featured ? styles.featured : ""}`}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.45, delay: index * 0.06 }}
-      whileHover={{ y: -4 }}
+      viewport={{ once: true, margin: "-30px" }}
+      transition={{ duration: 0.35, delay: index * 0.04 }}
+      whileHover={{ y: -3 }}
     >
-      <div className={styles.cardTop}>
-        <div className={styles.iconBox}>
-          <FontAwesomeIcon icon={icon} />
+      <div
+        className={styles.visualBanner}
+        style={{ background: gradient }}
+        aria-hidden="true"
+      >
+        <FontAwesomeIcon icon={icon} className={styles.bannerIcon} />
+        {project.featured && <span className={styles.featuredBadge}>★ Featured</span>}
+      </div>
+
+      <div className={styles.cardBody}>
+        <h3 className={styles.cardTitle}>{project.title}</h3>
+        <p className={styles.description}>{project.description}</p>
+
+        <div className={styles.tags}>
+          {project.tags.slice(0, 4).map((tag) => (
+            <span key={tag} className={styles.tag}>
+              {tag}
+            </span>
+          ))}
         </div>
-        <div className={styles.badges}>
-          {project.featured && (
-            <span className={styles.featuredBadge}>Featured</span>
+
+        <div className={styles.links}>
+          {project.sourceLink ? (
+            <a
+              href={project.sourceLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.link}
+            >
+              <FontAwesomeIcon icon={faCode} />
+              Source
+            </a>
+          ) : (
+            <span className={styles.internalNote}>Internal project</span>
           )}
-          <span className={styles.categoryBadge}>
-            {project.category === "dataEngineering" ? "Data" : "Full Stack"}
-          </span>
+          {project.liveLink && (
+            <a
+              href={project.liveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.link}
+            >
+              <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+              Demo
+            </a>
+          )}
         </div>
-      </div>
-
-      <h3 className={styles.title}>{project.title}</h3>
-      <p className={styles.description}>{project.description}</p>
-
-      <div className={styles.tags}>
-        {project.tags.map((tag) => (
-          <span key={tag} className="badge">
-            {tag}
-          </span>
-        ))}
-      </div>
-
-      <div className={styles.links}>
-        {project.sourceLink ? (
-          <a
-            href={project.sourceLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.link}
-          >
-            <FontAwesomeIcon icon={faCode} />
-            Source
-          </a>
-        ) : (
-          <span className={styles.internalNote}>Professional / internal project</span>
-        )}
-        {project.liveLink && (
-          <a
-            href={project.liveLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.link}
-          >
-            <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-            Live demo
-          </a>
-        )}
       </div>
     </motion.article>
   );
@@ -171,6 +153,5 @@ ProjectCard.propTypes = {
     liveLink: PropTypes.string,
     featured: PropTypes.bool,
   }).isRequired,
-  featured: PropTypes.bool,
   index: PropTypes.number,
 };

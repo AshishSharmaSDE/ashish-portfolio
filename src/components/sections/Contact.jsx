@@ -11,7 +11,6 @@ import {
   faLinkedinIn,
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import SectionHeading from "../layout/SectionHeading";
 import { contact, site } from "../../data/content";
 import styles from "./Contact.module.css";
 
@@ -23,13 +22,14 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="section">
+    <section id="contact" className={`section ${styles.section}`}>
       <div className="container">
-        <SectionHeading
-          label="Contact"
-          title={contact.heading}
-          subtitle={contact.subheading}
-        />
+        <div className={styles.header}>
+          <h2 className={styles.title}>{contact.heading}</h2>
+          <a href={`mailto:${site.email}`} className={styles.emailLink}>
+            {site.email}
+          </a>
+        </div>
 
         <div className={styles.layout}>
           <motion.aside
@@ -143,11 +143,6 @@ export default function Contact() {
               <FontAwesomeIcon icon={faPaperPlane} />
               {status === "submitting" ? "Sending..." : "Send message"}
             </button>
-
-            <p className={styles.note}>
-              Powered by FormSubmit — no backend required. You&apos;ll receive
-              messages directly at your email.
-            </p>
           </motion.form>
         </div>
       </div>
